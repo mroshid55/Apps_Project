@@ -1,0 +1,71 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+  <title>Update Notes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+</head>
+
+<body>
+
+  <!--  BEGIN CONTENT AREA  -->
+  <div id="content" class="main-content">
+    <div class="layout-px-spacing">
+
+
+      <!-- Modal -->
+
+      <div class="modal" id="notesMailModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Are you sure ?</h5>
+            </div>
+            <div class="modal-body">
+              <form method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h5>Do you really want to delete these records? This process cannot be undone.</h5>
+                <div class="modal-footer">
+                  <button class="btn btn-primary" type="submit" class="btn">Delete</button>
+                  <a class="btn btn-info" href="{% url 'Notes' %}" role="button">Cancel</a>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Modal -->
+
+
+    </div>
+    <!--  END CONTENT AREA  -->
+
+  </div>
+  <!-- END MAIN CONTAINER -->
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#notesMailModal').modal('show');
+    })
+  </script>
+
+
+</body>
+
+</html>
+{%endblock content%}
