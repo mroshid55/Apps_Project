@@ -24,13 +24,13 @@
 
         <div class="user-profile layout-spacing">
           <div class="widget-content widget-content-area">
-            <div class="d-flex justify-content-between">
-              <h3 class="">PROFILE</h3>
-              <button id="btn-add-notes" class="btn btn-primary"><i class="fa fa-save"></i></button>
-              <button id="btn-edit-notes" class="btn btn-primary"><i class="fa fa-edit"></i></button>
-              <button id="btn-delete-notes" class="btn btn-primary"><i class="fa fa-trash"></i></button>
-            </div>
 
+            {% for up in profile %}
+            <div class="text-right">
+              <button id="btn-add-notes" class="btn btn-primary"><i class="fa fa-save"></i></button>
+              <a class="btn btn-primary" href="{% url 'Update_Profile' up.id %}" role="button"><i class="fa fa-edit"></i></a>
+            </div>
+            {% endfor %}
 
             <div class="text-left user-info">
               {% for up in profile %}

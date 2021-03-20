@@ -68,3 +68,17 @@ def PROFILE(request):
         return render(request, 'Accounts/Profile.html', context)
     else:
         return render(request, "Accounts/Login.html")
+
+
+def UPDATE_PROFILE(request, pk):
+    edit_profile = Profile.objects.get(id=pk)
+    profile = Profile.objects.filter(user=request.user)
+    form = UserProfile(instance=edit_profile)
+    if request.method == 'POST':
+        form = UserProfile(request.POST, instance=edit_profile)
+        if form.is_valid():
+            form.save()
+            return redirect('Profile')
+
+    context = {'form': form,'profile':profile}
+    return render(request, "Accounts/profile_update.html", context)
